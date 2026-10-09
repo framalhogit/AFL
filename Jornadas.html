@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jornadas ZeroZero</title>
+    <style>
+:root { --azul: #17324d; --azul-claro: #eaf2f8; --fundo: #f2f4f7; --cartao: #ffffff; --texto: #20252b; --secundario: #66717d; --linha: #dce2e8; --verde: #137a49; --laranja: #9a5800; --vermelho: #a12622; --highlight: #fff3cd; --highlight-borda: #f0ad00; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 32px 18px; background: var(--fundo); color: var(--texto); font-family: Arial, Helvetica, sans-serif; }
+.pagina { width: min(1100px, 100%); margin: 0 auto; }
+.cabecalho-pagina { margin-bottom: 24px; }
+.cabecalho-pagina h1 { margin: 0 0 6px; color: var(--azul); font-size: 30px; }
+.cabecalho-pagina p { margin: 0; color: var(--secundario); }
+.cabecalho-pagina .data-execucao { margin-bottom: 8px; font-size: 14px; font-weight: 600; }
+.serie { margin-bottom: 24px; overflow: hidden; background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; box-shadow: 0 3px 12px rgba(20,40,60,.08); }
+.serie-cabecalho { padding: 20px 22px 18px; color: white; background: var(--azul); }
+.serie-nota { margin: 0 0 8px; font-size: 21px; font-weight: 700; }
+.serie-titulo { margin: 0; font-size: 15px; font-weight: 400; }
+.serie-titulo a { display: inline-flex; align-items: center; gap: 6px; color: #d9edff; text-decoration: none; font-weight: 600; }
+.serie-titulo a:hover, .serie-titulo a:focus { color: #fff; text-decoration: underline; }
+.link-externo { font-size: 13px; }
+.tabela-container { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th { padding: 11px 14px; color: var(--azul); background: var(--azul-claro); border-bottom: 2px solid var(--linha); font-size: 13px; text-align: left; text-transform: uppercase; letter-spacing: .04em; }
+td { padding: 12px 14px; border-bottom: 1px solid var(--linha); vertical-align: middle; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: #fafcfe; }
+tbody tr.linha-highlight, tbody tr.linha-highlight:hover { background: var(--highlight); }
+tbody tr.linha-highlight td { font-weight: 700; }
+tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight-borda); padding-left: 9px; }
+.data { width: 90px; font-family: Consolas, "Courier New", monospace; color: var(--secundario); white-space: nowrap; }
+.equipa-casa { text-align: right; }
+.resultado { width: 105px; text-align: center; font-family: Consolas, "Courier New", monospace; font-size: 15px; font-weight: 700; white-space: nowrap; }
+.resultado span { display: inline-block; min-width: 57px; padding: 5px 8px; border-radius: 6px; }
+.concluido { color: var(--verde); background: #e7f6ee; }
+.agendado { color: var(--laranja); background: #fff2de; }
+.especial { color: var(--vermelho); background: #fdebea; }
+.mensagem { padding: 18px 22px; color: var(--vermelho); }
+.rodape { margin-top: 26px; color: var(--secundario); font-size: 12px; text-align: center; }
+@media (max-width: 700px) { body { padding: 18px 8px; } .cabecalho-pagina h1 { font-size: 24px; } .serie-cabecalho { padding: 16px; } .serie-nota { font-size: 18px; } th, td { padding: 10px 8px; font-size: 13px; } tbody tr.linha-highlight td:first-child { padding-left: 3px; } }
+
+    </style>
+</head>
+<body>
+    <main class="pagina">
+        <header class="cabecalho-pagina">
+            <p class="data-execucao" id="data-execucao">
+                Relatório gerado em: 09/10/2026 às 17:56:19
+                (há 06s)
+            </p>
+            <h1>Resultados das jornadas</h1>
+            <p>Resultados e próximos jogos por equipa e competição.</p>
+        </header>
+
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub-16 Série Santiago</h2>
+                <h3 class="serie-titulo">
+                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-sub-16-1-fase-serie-2-2026-2027/225383" rel="noopener noreferrer">
+                        <span>AF Lisboa Juniores B Sub 16 1ª Fase Série 2 2026/2027</span>
+                        <span class="link-externo" aria-hidden="true">↗</span>
+                    </a>
+                </h3>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th style="text-align: right;">Equipa da casa</th>
+                            <th style="text-align: center;">Resultado / Hora</th>
+                            <th>Equipa visitante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="linha-highlight">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Rio de Mouro</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>EF Belém Estádio Restelo B</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Gonçalvinhense</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>Mem Martins SC</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Agualva</td>
+                            <td class="resultado">
+                                <span class="agendado">10:00</span>
+                            </td>
+                            <td>Sp. Lourel</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Vila Verde</td>
+                            <td class="resultado">
+                                <span class="agendado">18:00</span>
+                            </td>
+                            <td>Arsenal 72</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">24/01</td>
+                            <td class="equipa-casa">CD Belas</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>1º Dezembro</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub-16 Série Lourenço Costa</h2>
+                <h3 class="serie-titulo">
+                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-sub-16-1-fase-serie-3-2026-2027/225013" rel="noopener noreferrer">
+                        <span>AF Lisboa Juniores B Sub 16 1ª Fase Série 3 2026/2027</span>
+                        <span class="link-externo" aria-hidden="true">↗</span>
+                    </a>
+                </h3>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th style="text-align: right;">Equipa da casa</th>
+                            <th style="text-align: center;">Resultado / Hora</th>
+                            <th>Equipa visitante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Casa Pia AC</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>CF Unidos</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Academia Alcoitão</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>Maristas Carcavelos</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">CIF</td>
+                            <td class="resultado">
+                                <span class="agendado">09:00</span>
+                            </td>
+                            <td>EFBO</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">EF Belém Estádio Restelo</td>
+                            <td class="resultado">
+                                <span class="especial">ANU</span>
+                            </td>
+                            <td>Real SC</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Assoc. Torre</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>Est. Amadora</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Damaiense</td>
+                            <td class="resultado">
+                                <span class="agendado">17:30</span>
+                            </td>
+                            <td>GDS Cascais</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub-17 Série Dinis Almeida</h2>
+                <h3 class="serie-titulo">
+                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-ii-divisao-1-fase-serie-1-2026-2027/225008" rel="noopener noreferrer">
+                        <span>AF Lisboa Juniores B II Divisão 1ª Fase Série 1 2026/2027</span>
+                        <span class="link-externo" aria-hidden="true">↗</span>
+                    </a>
+                </h3>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th style="text-align: right;">Equipa da casa</th>
+                            <th style="text-align: center;">Resultado / Hora</th>
+                            <th>Equipa visitante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Santa Iria</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>Sintrense B</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">GS Loures</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>Sp. Lourel</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Casalinhense</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>At. Malveira</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Colégio Pedro Arrupe</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>Ponte Frielas</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">At. Tojal</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>CD Mafra B</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Águias de Camarate</td>
+                            <td class="resultado">
+                                <span class="agendado">10:00</span>
+                            </td>
+                            <td>Ponterrolense</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Sacavenense B</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>Venda do Pinheiro</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Vila Verde</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>Carregado</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub-17 Série Tiago Carvalho e Martim Matos</h2>
+                <h3 class="serie-titulo">
+                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-iii-divisao-1-fase-serie-6-2026-2027/224757" rel="noopener noreferrer">
+                        <span>AF Lisboa Juniores B III Divisão 1ª Fase Série 6 2026/2027</span>
+                        <span class="link-externo" aria-hidden="true">↗</span>
+                    </a>
+                </h3>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th style="text-align: right;">Equipa da casa</th>
+                            <th style="text-align: center;">Resultado / Hora</th>
+                            <th>Equipa visitante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="linha-highlight">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Porto Salvo C</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>União Mercês</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Vila Verde B</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>Pêro Pinheiro</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">União Mucifalense</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>Agualva</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Os Montelavarenses</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>Rio de Mouro</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Atlético Cacém</td>
+                            <td class="resultado">
+                                <span class="agendado">10:00</span>
+                            </td>
+                            <td>RD Algueirão</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">FC Despertar</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>Mem Martins SC</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub-15 Série Mister Rodrigo</h2>
+                <h3 class="serie-titulo">
+                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-c-2-divisao-serie-1-2026-27/225385" rel="noopener noreferrer">
+                        <span>AF Lisboa Juniores C 2ª Divisão Série 1 2026/27</span>
+                        <span class="link-externo" aria-hidden="true">↗</span>
+                    </a>
+                </h3>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th style="text-align: right;">Equipa da casa</th>
+                            <th style="text-align: center;">Resultado / Hora</th>
+                            <th>Equipa visitante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">FC Despertar</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>Lourinhanense</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Ponte Frielas</td>
+                            <td class="resultado">
+                                <span class="agendado">10:00</span>
+                            </td>
+                            <td>Alta de Lisboa</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Sp. Lourel</td>
+                            <td class="resultado">
+                                <span class="agendado">10:00</span>
+                            </td>
+                            <td>Carregado</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Rio de Mouro</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>GD Vialonga</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">GS Loures</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>At. Malveira</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">CMF Janitas</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>Sacavenense B</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Colégio Pedro Arrupe</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>Ericeirense</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/12</td>
+                            <td class="equipa-casa">Alenquer e Benfica</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>Vila Verde</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub-15 Série Bruno Carvalho</h2>
+                <h3 class="serie-titulo">
+                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-c-iii-divisao-serie-5-2026-2027/224837" rel="noopener noreferrer">
+                        <span>AF Lisboa Juniores C III Divisão Série 5 2026/2027</span>
+                        <span class="link-externo" aria-hidden="true">↗</span>
+                    </a>
+                </h3>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th style="text-align: right;">Equipa da casa</th>
+                            <th style="text-align: center;">Resultado / Hora</th>
+                            <th>Equipa visitante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Leões Porto Salvo</td>
+                            <td class="resultado">
+                                <span class="agendado">08:45</span>
+                            </td>
+                            <td>AD Oeiras B</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Fontainhas</td>
+                            <td class="resultado">
+                                <span class="agendado">10:00</span>
+                            </td>
+                            <td>Central 32</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Salesianos do Estoril</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>Atlético Cacém</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Porto Salvo</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>GDS Cascais</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Outurela</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>Estoril Atlético</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Abóboda</td>
+                            <td class="resultado">
+                                <span class="agendado">11:00</span>
+                            </td>
+                            <td>U. Tires</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">11/10</td>
+                            <td class="equipa-casa">Talaíde</td>
+                            <td class="resultado">
+                                <span class="especial">ANU</span>
+                            </td>
+                            <td>Agualva</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <footer class="rodape">
+            Dados obtidos a partir das páginas das competições no ZeroZero.
+        </footer>
+    </main>
+
+    <script>
+        const dataGeracao = new Date("2026-10-09T17:56:19+01:00");
+        const textoDataGeracao = "09/10/2026 às 17:56:19";
+
+        function atualizarTempoDecorrido() {
+            const elemento = document.getElementById("data-execucao");
+
+            if (!elemento || Number.isNaN(dataGeracao.getTime())) {
+                return;
+            }
+
+            let totalSegundos = Math.max(
+                0,
+                Math.floor((Date.now() - dataGeracao.getTime()) / 1000)
+            );
+
+            const dias = Math.floor(totalSegundos / 86400);
+            totalSegundos %= 86400;
+
+            const horas = Math.floor(totalSegundos / 3600);
+            totalSegundos %= 3600;
+
+            const minutos = Math.floor(totalSegundos / 60);
+            const segundos = totalSegundos % 60;
+            const partesTempo = [];
+
+            if (dias > 0) {
+                partesTempo.push(`${dias}d`);
+            }
+
+            if (horas > 0) {
+                partesTempo.push(`${String(horas).padStart(2, "0")}h`);
+            }
+
+            if (minutos > 0) {
+                partesTempo.push(`${String(minutos).padStart(2, "0")}m`);
+            }
+
+            partesTempo.push(`${String(segundos).padStart(2, "0")}s`);
+
+            elemento.textContent =
+                `Relatório gerado em: ${textoDataGeracao} ` +
+                `(há ${partesTempo.join(" ")})`;
+        }
+
+        atualizarTempoDecorrido();
+        window.setInterval(atualizarTempoDecorrido, 1000);
+    </script>
+</body>
+</html>
