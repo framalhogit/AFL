@@ -41,13 +41,26 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
 @media (max-width: 700px) { body { padding: 18px 8px; } .cabecalho-pagina h1 { font-size: 24px; } .serie-cabecalho { padding: 16px; } .serie-nota { font-size: 18px; } th, td { padding: 10px 8px; font-size: 13px; } tbody tr.linha-highlight td:first-child { padding-left: 3px; } }
 
     </style>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <script>
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+            window.location.reload();
+        }
+    });
+    </script>
 </head>
 <body>
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao">
-                Relatório gerado em: 09/10/2026 às 19:42:34
-                (há 06s)
+                Relatório gerado em: 09/10/2026 às 19:53:40
+                (há 05s)
             </p>
             <h1>Resultados das jornada</h1>
             <p>Resultados ou próximos jogos por equipa e competição.</p>
@@ -581,8 +594,8 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
     </main>
 
     <script>
-        const dataGeracao = new Date("2026-10-09T19:42:34+01:00");
-        const textoDataGeracao = "09/10/2026 às 19:42:34";
+        const dataGeracao = new Date("2026-10-09T19:53:40+01:00");
+        const textoDataGeracao = "09/10/2026 às 19:53:40";
 
         function atualizarTempoDecorrido() {
             const elemento = document.getElementById("data-execucao");
