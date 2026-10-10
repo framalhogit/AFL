@@ -59,7 +59,7 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao">
-                Obtido em 10/10/2026 às 11:39:34
+                Relatório de 10/10/2026 às 11:46:51
                 (há 05s)
             </p>
             <h1>Jornadas no ZeroZero</h1>
@@ -320,7 +320,7 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
 </section>
         <section class="serie">
             <header class="serie-cabecalho">
-                <h2 class="serie-nota">Sub-16 Série Lourenço Costa</h2>
+                <h2 class="serie-nota">Sub-16 Série Lourenço Costa, Hermeson</h2>
                 <h3 class="serie-titulo">
                     <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-sub-16-1-fase-serie-3-2026-2027/225013" rel="noopener noreferrer">
                         <span>AF Lisboa Juniores B Sub 16 1ª Fase Série 3 2026/2027</span>
@@ -368,7 +368,7 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
                             <td>EFBO</td>
                         </tr>
 
-                        <tr class="">
+                        <tr class="linha-highlight">
                             <td class="data">11/10</td>
                             <td class="equipa-casa">EF Belém Estádio Restelo</td>
                             <td class="resultado">
@@ -500,7 +500,7 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
 </section>
         <section class="serie">
             <header class="serie-cabecalho">
-                <h2 class="serie-nota">Sub-15 3ªDiv Série Bruno Carvalho</h2>
+                <h2 class="serie-nota">Sub-15 3ªDiv Série Mister Bruno Carvalho</h2>
                 <h3 class="serie-titulo">
                     <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-c-iii-divisao-serie-5-2026-2027/224837" rel="noopener noreferrer">
                         <span>AF Lisboa Juniores C III Divisão Série 5 2026/2027</span>
@@ -693,8 +693,8 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
     </main>
 
     <script>
-        const dataGeracao = new Date("2026-10-10T11:39:34+01:00");
-        const textoDataGeracao = "10/10/2026 às 11:39:34";
+        const dataGeracao = new Date("2026-10-10T11:46:51+01:00");
+        const textoDataGeracao = "10/10/2026 às 11:46:51";
 
         function atualizarTempoDecorrido() {
             const elemento = document.getElementById("data-execucao");
@@ -733,7 +733,7 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
             partesTempo.push(`${String(segundos).padStart(2, "0")}s`);
 
             elemento.textContent =
-                `Obtido em ${textoDataGeracao} ` +
+                `Relatório de ${textoDataGeracao} ` +
                 `(há ${partesTempo.join(" ")})`;
         }
 
