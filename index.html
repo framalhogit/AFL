@@ -59,8 +59,8 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao">
-                Relatório de 11/10/2026 às 10:10:01
-                (há 16s)
+                Relatório de 11/10/2026 às 10:20:01
+                (há 10s)
             </p>
             <h1>Jornadas no ZeroZero</h1>
             <p>Resultados/próximos jogos por equipa e competição.</p>
@@ -192,7 +192,7 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
                             <td class="data">11/10</td>
                             <td class="equipa-casa">Colégio Pedro Arrupe</td>
                             <td class="resultado">
-                                <span class="concluido">1 0 2026 10 11 08 45 00 3600 2-0</span>
+                                <span class="agendado">08:45</span>
                             </td>
                             <td>Ponte Frielas</td>
                         </tr>
@@ -435,7 +435,7 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
                             <td class="data">11/10</td>
                             <td class="equipa-casa">Ponte Frielas</td>
                             <td class="resultado">
-                                <span class="concluido">1 0 2026 10 11 10 00 00 3600 0-0</span>
+                                <span class="concluido">0 0 2026 10 11 10 00 00 3600 0-0</span>
                             </td>
                             <td>Alta de Lisboa</td>
                         </tr>
@@ -693,8 +693,8 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
     </main>
 
     <script>
-        const dataGeracao = new Date("2026-10-11T10:10:01+01:00");
-        const textoDataGeracao = "11/10/2026 às 10:10:01";
+        const dataGeracao = new Date("2026-10-11T10:20:01+01:00");
+        const textoDataGeracao = "11/10/2026 às 10:20:01";
 
         function atualizarTempoDecorrido() {
             const elemento = document.getElementById("data-execucao");
