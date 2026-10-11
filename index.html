@@ -16,9 +16,26 @@ body { margin: 0; padding: 32px 18px; background: var(--fundo); color: var(--tex
 .serie { margin-bottom: 24px; overflow: hidden; background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; box-shadow: 0 3px 12px rgba(20,40,60,.08); }
 .serie-cabecalho { padding: 20px 22px 18px; color: white; background: var(--azul); }
 .serie-nota { margin: 0 0 8px; font-size: 21px; font-weight: 700; }
-.serie-titulo { margin: 0; font-size: 15px; font-weight: 400; }
-.serie-titulo a { display: inline-flex; align-items: center; gap: 6px; color: #d9edff; text-decoration: none; font-weight: 600; }
-.serie-titulo a:hover, .serie-titulo a:focus { color: #fff; text-decoration: underline; }
+.serie-titulo {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.serie-titulo a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.serie-titulo a:hover,
+.serie-titulo a:focus {
+    color: #ffd54f;
+    text-decoration: underline;
+}
 .link-externo { font-size: 13px; }
 .tabela-container { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
@@ -61,8 +78,8 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao">
-                Relatório de 11/10/2026 às 14:56:30
-                (há 08s)
+                Relatório de 11/10/2026 às 14:59:13
+                (há 06s)
             </p>
             <h1>Jornadas no ZeroZero</h1>
             <p>Resultados/próximos jogos por equipa e competição.</p>
@@ -695,8 +712,8 @@ tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight
     </main>
 
     <script>
-        const dataGeracao = new Date("2026-10-11T14:56:30+01:00");
-        const textoDataGeracao = "11/10/2026 às 14:56:30";
+        const dataGeracao = new Date("2026-10-11T14:59:13+01:00");
+        const textoDataGeracao = "11/10/2026 às 14:59:13";
 
         function atualizarTempoDecorrido() {
             const elemento = document.getElementById("data-execucao");
