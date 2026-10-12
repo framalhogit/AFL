@@ -38,6 +38,31 @@ body { margin: 0; padding: 32px 18px; background: var(--fundo); color: var(--tex
     background-color: rgba(255, 255, 255, 0.18);
     color: #ffffff;
 }
+
+.serie-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.link-fpf {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 5px 9px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.10);
+}
+.link-fpf:hover,
+.link-fpf:focus {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
 .link-externo { font-size: 13px; }
 .tabela-container { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
@@ -108,8 +133,8 @@ table { table-layout: auto; }
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao">
-                Snapshot de 12/10/2026 às 18:03:56
-                (há 07s)
+                Snapshot de 12/10/2026 às 18:36:19
+                (há 09s)
             </p>
             <h1>Jornada no ZeroZero</h1>
             <p>Jogos e resultados por equipa e competição.</p>
@@ -118,12 +143,18 @@ table { table-layout: auto; }
         <section class="serie">
             <header class="serie-cabecalho">
                 <h2 class="serie-nota">Sub-16 Série Santiago, Duarte Almeida, Lobato e Xavi</h2>
-                <h3 class="serie-titulo">
-                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-sub-16-1-fase-serie-2-2026-2027/225383" rel="noopener noreferrer">
-                        <span>AF Lisboa Juniores B Sub 16 1ª Fase Série 2 2026/2027</span>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-sub-16-1-fase-serie-2-2026-2027/225383" target="_blank" rel="noopener noreferrer">
+                            <span>AF Lisboa Juniores B Sub 16 1ª Fase Série 2 2026/2027</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                    </h3>
+                    <a class="link-fpf" href="https://resultados.fpf.pt/Competition/Details?competitionId=30059&amp;seasonId=106" target="_blank" rel="noopener noreferrer">
+                        <span>FPF</span>
                         <span class="link-externo" aria-hidden="true">↗</span>
                     </a>
-                </h3>
+                </div>
             </header>
 
             <div class="tabela-container">
@@ -182,12 +213,18 @@ table { table-layout: auto; }
         <section class="serie">
             <header class="serie-cabecalho">
                 <h2 class="serie-nota">Sub-17 2ªDiv Série Dinis, Rebocho, Davi Silva</h2>
-                <h3 class="serie-titulo">
-                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-ii-divisao-1-fase-serie-1-2026-2027/225008" rel="noopener noreferrer">
-                        <span>AF Lisboa Juniores B II Divisão 1ª Fase Série 1 2026/2027</span>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-ii-divisao-1-fase-serie-1-2026-2027/225008" target="_blank" rel="noopener noreferrer">
+                            <span>AF Lisboa Juniores B II Divisão 1ª Fase Série 1 2026/2027</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                    </h3>
+                    <a class="link-fpf" href="https://resultados.fpf.pt/Competition/Details?competitionId=30056&amp;seasonId=106" target="_blank" rel="noopener noreferrer">
+                        <span>FPF</span>
                         <span class="link-externo" aria-hidden="true">↗</span>
                     </a>
-                </h3>
+                </div>
             </header>
 
             <div class="tabela-container">
@@ -273,12 +310,18 @@ table { table-layout: auto; }
         <section class="serie">
             <header class="serie-cabecalho">
                 <h2 class="serie-nota">Sub-17 3ªDiv Série Tiago e Matos, Silva e Nascimento, e Rio de Mouro 2010</h2>
-                <h3 class="serie-titulo">
-                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-iii-divisao-1-fase-serie-6-2026-2027/224757" rel="noopener noreferrer">
-                        <span>AF Lisboa Juniores B III Divisão 1ª Fase Série 6 2026/2027</span>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-iii-divisao-1-fase-serie-6-2026-2027/224757" target="_blank" rel="noopener noreferrer">
+                            <span>AF Lisboa Juniores B III Divisão 1ª Fase Série 6 2026/2027</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                    </h3>
+                    <a class="link-fpf" href="https://resultados.fpf.pt/Competition/Details?competitionId=30061&amp;seasonId=106" target="_blank" rel="noopener noreferrer">
+                        <span>FPF</span>
                         <span class="link-externo" aria-hidden="true">↗</span>
                     </a>
-                </h3>
+                </div>
             </header>
 
             <div class="tabela-container">
@@ -346,12 +389,18 @@ table { table-layout: auto; }
         <section class="serie">
             <header class="serie-cabecalho">
                 <h2 class="serie-nota">Sub-16 Série Lourenço Costa, Hermeson</h2>
-                <h3 class="serie-titulo">
-                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-sub-16-1-fase-serie-3-2026-2027/225013" rel="noopener noreferrer">
-                        <span>AF Lisboa Juniores B Sub 16 1ª Fase Série 3 2026/2027</span>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-sub-16-1-fase-serie-3-2026-2027/225013" target="_blank" rel="noopener noreferrer">
+                            <span>AF Lisboa Juniores B Sub 16 1ª Fase Série 3 2026/2027</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                    </h3>
+                    <a class="link-fpf" href="https://resultados.fpf.pt/Competition/Details?competitionId=30059&amp;seasonId=106" target="_blank" rel="noopener noreferrer">
+                        <span>FPF</span>
                         <span class="link-externo" aria-hidden="true">↗</span>
                     </a>
-                </h3>
+                </div>
             </header>
 
             <div class="tabela-container">
@@ -419,12 +468,18 @@ table { table-layout: auto; }
         <section class="serie">
             <header class="serie-cabecalho">
                 <h2 class="serie-nota">Sub-15 2ªDiv Série Rio de Mouro 2012 (Mister Rodrigo)</h2>
-                <h3 class="serie-titulo">
-                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-c-2-divisao-serie-1-2026-27/225385" rel="noopener noreferrer">
-                        <span>AF Lisboa Juniores C 2ª Divisão Série 1 2026/27</span>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-c-2-divisao-serie-1-2026-27/225385" target="_blank" rel="noopener noreferrer">
+                            <span>AF Lisboa Juniores C 2ª Divisão Série 1 2026/27</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                    </h3>
+                    <a class="link-fpf" href="https://resultados.fpf.pt/Competition/Details?competitionId=30057&amp;seasonId=106" target="_blank" rel="noopener noreferrer">
+                        <span>FPF</span>
                         <span class="link-externo" aria-hidden="true">↗</span>
                     </a>
-                </h3>
+                </div>
             </header>
 
             <div class="tabela-container">
@@ -510,12 +565,18 @@ table { table-layout: auto; }
         <section class="serie">
             <header class="serie-cabecalho">
                 <h2 class="serie-nota">Sub-15 3ªDiv Série Mister Bruno Carvalho</h2>
-                <h3 class="serie-titulo">
-                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-c-iii-divisao-serie-5-2026-2027/224837" rel="noopener noreferrer">
-                        <span>AF Lisboa Juniores C III Divisão Série 5 2026/2027</span>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-c-iii-divisao-serie-5-2026-2027/224837" target="_blank" rel="noopener noreferrer">
+                            <span>AF Lisboa Juniores C III Divisão Série 5 2026/2027</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                    </h3>
+                    <a class="link-fpf" href="https://resultados.fpf.pt/Competition/Details?competitionId=30062&amp;seasonId=106" target="_blank" rel="noopener noreferrer">
+                        <span>FPF</span>
                         <span class="link-externo" aria-hidden="true">↗</span>
                     </a>
-                </h3>
+                </div>
             </header>
 
             <div class="tabela-container">
@@ -592,12 +653,18 @@ table { table-layout: auto; }
         <section class="serie">
             <header class="serie-cabecalho">
                 <h2 class="serie-nota">Sub 17 1ªDiv Série Benjamim, Miranda</h2>
-                <h3 class="serie-titulo">
-                    <a href="https://www.zerozero.pt/competicao/af-lisboa-juniores-b-1-divisao" rel="noopener noreferrer">
-                        <span>AF Lisboa Juniores B 1ª Divisão 2026/2027</span>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/competicao/af-lisboa-juniores-b-1-divisao" target="_blank" rel="noopener noreferrer">
+                            <span>AF Lisboa Juniores B 1ª Divisão 2026/2027</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                    </h3>
+                    <a class="link-fpf" href="https://resultados.fpf.pt/Competition/Details?competitionId=30052&amp;seasonId=106" target="_blank" rel="noopener noreferrer">
+                        <span>FPF</span>
                         <span class="link-externo" aria-hidden="true">↗</span>
                     </a>
-                </h3>
+                </div>
             </header>
 
             <div class="tabela-container">
@@ -683,12 +750,18 @@ table { table-layout: auto; }
         <section class="serie">
             <header class="serie-cabecalho">
                 <h2 class="serie-nota">Sub 19 2ªDiv Série Rio de Mouro Juniores</h2>
-                <h3 class="serie-titulo">
-                    <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-a-2-divisao-serie-2-2026-2027/224787" rel="noopener noreferrer">
-                        <span>AF Lisboa Juniores A 2ª Divisão Série 2 2026/2027</span>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-a-2-divisao-serie-2-2026-2027/224787" target="_blank" rel="noopener noreferrer">
+                            <span>AF Lisboa Juniores A 2ª Divisão Série 2 2026/2027</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                    </h3>
+                    <a class="link-fpf" href="https://resultados.fpf.pt/Competition/Details?competitionId=30047&amp;seasonId=106" target="_blank" rel="noopener noreferrer">
+                        <span>FPF</span>
                         <span class="link-externo" aria-hidden="true">↗</span>
                     </a>
-                </h3>
+                </div>
             </header>
 
             <div class="tabela-container">
@@ -774,12 +847,18 @@ table { table-layout: auto; }
         <section class="serie">
             <header class="serie-cabecalho">
                 <h2 class="serie-nota">Seniores 3ªDiv Série Rio de Mouro Seniores</h2>
-                <h3 class="serie-titulo">
-                    <a href="https://www.zerozero.pt/competicao/af-lisboa-3-divisao" rel="noopener noreferrer">
-                        <span>AF Lisboa 3ª Divisão Série 3 2026/2027</span>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/competicao/af-lisboa-3-divisao" target="_blank" rel="noopener noreferrer">
+                            <span>AF Lisboa 3ª Divisão Série 3 2026/2027</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                    </h3>
+                    <a class="link-fpf" href="https://resultados.fpf.pt/Competition/Details?competitionId=29945&amp;seasonId=106" target="_blank" rel="noopener noreferrer">
+                        <span>FPF</span>
                         <span class="link-externo" aria-hidden="true">↗</span>
                     </a>
-                </h3>
+                </div>
             </header>
 
             <div class="tabela-container">
@@ -850,8 +929,8 @@ table { table-layout: auto; }
     </main>
 
     <script>
-        const dataGeracao = new Date("2026-10-12T18:03:56+01:00");
-        const textoDataGeracao = "12/10/2026 às 18:03:56";
+        const dataGeracao = new Date("2026-10-12T18:36:19+01:00");
+        const textoDataGeracao = "12/10/2026 às 18:36:19";
 
         function atualizarTempoDecorrido() {
             const elemento = document.getElementById("data-execucao");
