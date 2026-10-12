@@ -17,8 +17,25 @@ body { margin: 0; padding: 32px 18px; background: var(--fundo); color: var(--tex
 .serie-cabecalho { padding: 20px 22px 18px; color: white; background: var(--azul); }
 .serie-nota { margin: 0 0 8px; font-size: 21px; font-weight: 700; }
 .serie-titulo { margin: 0; font-size: 15px; font-weight: 400; }
-.serie-titulo a { display: inline-flex; align-items: center; gap: 6px; color: #d9edff; text-decoration: none; font-weight: 600; }
-.serie-titulo a:hover, .serie-titulo a:focus { color: #fff; text-decoration: underline; }
+.serie-titulo a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+
+    padding: 6px 10px;
+    border-radius: 8px;
+
+    background-color: rgba(255, 255, 255, 0.10);
+}
+.serie-titulo a:hover,
+.serie-titulo a:focus {
+    background-color: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+}
 .link-externo { font-size: 13px; }
 .tabela-container { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
@@ -89,7 +106,7 @@ table { table-layout: auto; }
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao">
-                Relatório de 12/10/2026 às 01:32:52
+                Relatório de 12/10/2026 às 01:37:19
                 (há 07s)
             </p>
             <h1>Jornadas no ZeroZero</h1>
@@ -831,8 +848,8 @@ table { table-layout: auto; }
     </main>
 
     <script>
-        const dataGeracao = new Date("2026-10-12T01:32:52+01:00");
-        const textoDataGeracao = "12/10/2026 às 01:32:52";
+        const dataGeracao = new Date("2026-10-12T01:37:19+01:00");
+        const textoDataGeracao = "12/10/2026 às 01:37:19";
 
         function atualizarTempoDecorrido() {
             const elemento = document.getElementById("data-execucao");
