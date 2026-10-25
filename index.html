@@ -123,8 +123,8 @@ table { table-layout: auto; }
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao">
-                Snapshot de 25/10/2026 às 13:00:38
-                (há 11s)
+                Snapshot de 25/10/2026 às 13:03:03
+                (há 09s)
             </p>
             <h1>Jornada no ZeroZero</h1>
             <p>Jogos e resultados por equipa e competição.</p>
@@ -928,8 +928,8 @@ table { table-layout: auto; }
     </main>
 
     <script>
-        const dataGeracao = new Date("2026-10-25T13:00:38+00:00");
-        const textoDataGeracao = "25/10/2026 às 13:00:38";
+        const dataGeracao = new Date("2026-10-25T13:03:03+00:00");
+        const textoDataGeracao = "25/10/2026 às 13:03:03";
 
         function atualizarTempoDecorrido() {
             const elemento = document.getElementById("data-execucao");
@@ -975,17 +975,20 @@ table { table-layout: auto; }
         atualizarTempoDecorrido();
         window.setInterval(atualizarTempoDecorrido, 1000);
     </script>
-    <section class="serie">
-        <header class="serie-cabecalho">
-            <div class="serie-links">
-                <h3 class="serie-titulo">
-                    <a href="https://resultados.fpf.pt/Competition" rel="noopener noreferrer">
-                        <span>Competições FPF</span>
-                        <span class="link-externo" aria-hidden="true">↗</span>
-                    </a>
-                </h3>
-            </div>
-        </header>
-    </section>
+    <main class="pagina">
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">LINKS</h2>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://resultados.fpf.pt/Competition" rel="noopener noreferrer">
+                            <span>Competições FPF</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                    </h3>
+                </div>
+            </header>
+        </section>
+    </main>
 </body>
 </html>
