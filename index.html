@@ -45,6 +45,20 @@ body { margin: 0; padding: 32px 18px; background: var(--fundo); color: var(--tex
     gap: 10px;
     flex-wrap: wrap;
 }
+.serie-jornada {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #ffaaaa;
+    text-decoration: none;
+    font-weight: 700;
+
+    padding: 6px 10px;
+    border-radius: 8px;
+
+    background-color: rgba(255, 255, 255, 0.10);
+}
 
 .link-externo { font-size: 13px; }
 .tabela-container { overflow-x: auto; }
@@ -123,7 +137,7 @@ table { table-layout: auto; }
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao">
-                Snapshot de 28/10/2026 às 23:39:12
+                Snapshot de 28/10/2026 às 23:43:08
                 (há 07s)
             </p>
             <h1>Jornada no ZeroZero</h1>
@@ -143,7 +157,7 @@ table { table-layout: auto; }
                             <span>FPF</span>
                             <span class="link-externo" aria-hidden="true">↗</span>
                         </a>
-                        <span style="color:red">Jornada 4</span>
+                        <span class="serie-jornada">Jornada 4</span>
                     </h3>
                 </div>
             </header>
@@ -223,7 +237,7 @@ table { table-layout: auto; }
                             <span>FPF</span>
                             <span class="link-externo" aria-hidden="true">↗</span>
                         </a>
-                        <span style="color:red">Jornada 4</span>
+                        <span class="serie-jornada">Jornada 4</span>
                     </h3>
                 </div>
             </header>
@@ -321,7 +335,7 @@ table { table-layout: auto; }
                             <span>FPF</span>
                             <span class="link-externo" aria-hidden="true">↗</span>
                         </a>
-                        <span style="color:red">Jornada 4</span>
+                        <span class="serie-jornada">Jornada 4</span>
                     </h3>
                 </div>
             </header>
@@ -401,7 +415,7 @@ table { table-layout: auto; }
                             <span>FPF</span>
                             <span class="link-externo" aria-hidden="true">↗</span>
                         </a>
-                        <span style="color:red">Jornada 4</span>
+                        <span class="serie-jornada">Jornada 4</span>
                     </h3>
                 </div>
             </header>
@@ -481,7 +495,7 @@ table { table-layout: auto; }
                             <span>FPF</span>
                             <span class="link-externo" aria-hidden="true">↗</span>
                         </a>
-                        <span style="color:red">Jornada 4</span>
+                        <span class="serie-jornada">Jornada 4</span>
                     </h3>
                 </div>
             </header>
@@ -579,7 +593,7 @@ table { table-layout: auto; }
                             <span>FPF</span>
                             <span class="link-externo" aria-hidden="true">↗</span>
                         </a>
-                        <span style="color:red">Jornada 4</span>
+                        <span class="serie-jornada">Jornada 4</span>
                     </h3>
                 </div>
             </header>
@@ -668,7 +682,7 @@ table { table-layout: auto; }
                             <span>FPF</span>
                             <span class="link-externo" aria-hidden="true">↗</span>
                         </a>
-                        <span style="color:red">Jornada 4</span>
+                        <span class="serie-jornada">Jornada 4</span>
                     </h3>
                 </div>
             </header>
@@ -766,7 +780,7 @@ table { table-layout: auto; }
                             <span>FPF</span>
                             <span class="link-externo" aria-hidden="true">↗</span>
                         </a>
-                        <span style="color:red">Jornada 5</span>
+                        <span class="serie-jornada">Jornada 5</span>
                     </h3>
                 </div>
             </header>
@@ -864,7 +878,7 @@ table { table-layout: auto; }
                             <span>FPF</span>
                             <span class="link-externo" aria-hidden="true">↗</span>
                         </a>
-                        <span style="color:red">Jornada 6</span>
+                        <span class="serie-jornada">Jornada 6</span>
                     </h3>
                 </div>
             </header>
@@ -944,7 +958,7 @@ table { table-layout: auto; }
                             <span>FPF</span>
                             <span class="link-externo" aria-hidden="true">↗</span>
                         </a>
-                        <span style="color:red">Jornada 2</span>
+                        <span class="serie-jornada">Jornada 2</span>
                     </h3>
                 </div>
             </header>
@@ -1007,8 +1021,8 @@ table { table-layout: auto; }
     </main>
 
     <script>
-        const dataGeracao = new Date("2026-10-28T23:39:12+00:00");
-        const textoDataGeracao = "28/10/2026 às 23:39:12";
+        const dataGeracao = new Date("2026-10-28T23:43:08+00:00");
+        const textoDataGeracao = "28/10/2026 às 23:43:08";
 
         function atualizarTempoDecorrido() {
             const elemento = document.getElementById("data-execucao");
