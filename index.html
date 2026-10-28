@@ -48,7 +48,6 @@ body { margin: 0; padding: 32px 18px; background: var(--fundo); color: var(--tex
 .serie-jornada {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
 
     color: #ccffcc;
     text-decoration: none;
@@ -58,6 +57,9 @@ body { margin: 0; padding: 32px 18px; background: var(--fundo); color: var(--tex
     border-radius: 8px;
 
     background-color: black;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .link-externo { font-size: 13px; }
@@ -137,7 +139,7 @@ table { table-layout: auto; }
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao">
-                Snapshot de 28/10/2026 às 23:47:00
+                Snapshot de 28/10/2026 às 23:48:38
                 (há 07s)
             </p>
             <h1>Jornada no ZeroZero</h1>
@@ -1021,8 +1023,8 @@ table { table-layout: auto; }
     </main>
 
     <script>
-        const dataGeracao = new Date("2026-10-28T23:47:00+00:00");
-        const textoDataGeracao = "28/10/2026 às 23:47:00";
+        const dataGeracao = new Date("2026-10-28T23:48:38+00:00");
+        const textoDataGeracao = "28/10/2026 às 23:48:38";
 
         function atualizarTempoDecorrido() {
             const elemento = document.getElementById("data-execucao");
