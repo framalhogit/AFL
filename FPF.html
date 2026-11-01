@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jornada na FPF</title>
+    <link rel="icon" type="image/x-icon" href="https://framalhogit.github.io/AFL/favicon.ico">
+    <link rel="shortcut icon" href="https://framalhogit.github.io/AFL/favicon.ico">
+    <style>
+:root { --azul: #17324d; --azul-claro: #eaf2f8; --fundo: #f2f4f7; --cartao: #ffffff; --texto: #20252b; --secundario: #66717d; --linha: #dce2e8; --verde: #137a49; --laranja: #9a5800; --vermelho: #a12622; --highlight: #fff3cd; --highlight-borda: #f0ad00; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 32px 18px; background: var(--fundo); color: var(--texto); font-family: Arial, Helvetica, sans-serif; }
+.pagina { width: min(1100px, 100%); margin: 0 auto; }
+.cabecalho-pagina { margin-bottom: 24px; }
+.cabecalho-pagina h1 { margin: 0 0 6px; color: var(--azul); font-size: 30px; }
+.cabecalho-pagina p { margin: 0; color: var(--secundario); }
+.cabecalho-pagina .data-execucao { margin-bottom: 8px; font-size: 14px; font-weight: 600; }
+.serie { margin-bottom: 24px; overflow: hidden; background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; box-shadow: 0 3px 12px rgba(20,40,60,.08); }
+.serie-cabecalho { padding: 20px 22px 18px; color: white; background: var(--azul); }
+.serie-nota { margin: 0 0 8px; font-size: 21px; font-weight: 700; }
+.serie-titulo { margin: 0; font-size: 15px; font-weight: 400; }
+.serie-titulo a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+
+    padding: 6px 10px;
+    border-radius: 8px;
+
+    background-color: rgba(255, 255, 255, 0.10);
+}
+.serie-titulo a:hover,
+.serie-titulo a:focus {
+    background-color: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+}
+
+.serie-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.serie-jornada {
+    display: inline-flex;
+    align-items: center;
+
+    color: #ccffcc;
+    text-decoration: none;
+    font-weight: 700;
+
+    padding: 6px 10px;
+    border-radius: 8px;
+
+    background-color: black;
+    gap: 10px;
+}
+
+.link-externo { font-size: 13px; }
+.tabela-container { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th { padding: 11px 14px; color: var(--azul); background: var(--azul-claro); border-bottom: 2px solid var(--linha); font-size: 13px; text-align: left; text-transform: uppercase; letter-spacing: .04em; }
+td { padding: 12px 14px; border-bottom: 1px solid var(--linha); vertical-align: middle; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: #fafcfe; }
+tbody tr.linha-highlight, tbody tr.linha-highlight:hover { background: var(--highlight); }
+tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight-borda); padding-left: 9px; }
+.data { width: 90px; font-family: Consolas, "Courier New", monospace; color: var(--secundario); white-space: nowrap; }
+.equipa-casa { text-align: right; }
+/*.posicao { font-size: 0.78em; font-weight: 400 !important; color: #8a94a3; margin-left: 4px; white-space: nowrap; vertical-align: baseline; background: #fafafa; }*/
+.resultado { width: 105px; text-align: center; font-family: Consolas, "Courier New", monospace; font-size: 15px; font-weight: 700; white-space: nowrap; }
+.resultado span { display: inline-block; min-width: 57px; padding: 5px 8px; border-radius: 6px; }
+.concluido { color: var(--verde); background: #e7f6ee; }
+.agendado { color: var(--laranja); background: #fff2de; }
+.especial { color: var(--vermelho); background: #fdebea; }
+.mensagem { padding: 18px 22px; color: var(--vermelho); }
+.rodape { margin-top: 26px; color: var(--secundario); font-size: 12px; text-align: center; }
+@media (max-width: 700px) { body { padding: 18px 8px; } .cabecalho-pagina h1 { font-size: 24px; } .serie-cabecalho { padding: 16px; } .serie-nota { font-size: 18px; } th, td { padding: 10px 8px; font-size: 13px; } tbody tr.linha-highlight td:first-child { padding-left: 3px; } }
+
+/* Tabela de seis colunas: Data | Casa | Class. | Resultado | Class. | Visitante */
+table { table-layout: auto; }
+.equipa-casa { text-align: right; }
+.equipa-fora { text-align: left; }
+.classificacao {
+    width: 32px;
+    min-width: 32px;
+    padding-left: 6px;
+    padding-right: 6px;
+    text-align: center;
+    color: #6f7885;
+    background-color: rgba(15, 52, 82, 0.03);
+    font-size: 0.8em;
+    font-weight: 400 !important;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.resultado { width: 88px; }
+
+@media (max-width: 700px) {
+    .classificacao {
+        width: 24px;
+        min-width: 24px;
+        padding-left: 4px;
+        padding-right: 4px;
+        font-size: 0.7em;
+    }
+    .resultado { width: 74px; }
+}
+
+
+        /* FPF: cor própria para o cabeçalho das séries */
+        .serie-cabecalho {
+            background: #0C3611 !important;
+        }
+    </style>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <script>
+        // Refresh automático após 5 minutos
+        setTimeout(() => {
+            window.location.reload();
+        }, 5 * 60 * 1000);
+
+        // Se a página for recuperada da back/forward cache,
+        // força a obtenção da versão atual
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
+    </script>
+</head>
+<body>
+    <main class="pagina">
+        <header class="cabecalho-pagina">
+            <p class="data-execucao" id="data-execucao">
+                Snapshot de 01/11/2026 às 00:45:44
+                (há 03s)
+            </p>
+            <h1>Jornada na FPF</h1>
+            <p>Jogos e resultados por equipa e competição (31/10 e 01/11).</p>
+        </header>
+
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub-16 S2 ⚽ <span style="font-size: 0.85em; color: #D9F2D0; font-weight: 600;">★ RdM 2011 <span style="color: #fbbf24; font-weight: bold; margin: 0 0.2em;">•</span> Duarte Almeida e Massomba <span style="color: #fbbf24; font-weight: bold; margin: 0 0.2em;">•</span> Lobato, Xavi e Davi Costa</span></h2>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-sub-16-1-fase-serie-2-2026-2027/225383" rel="noopener noreferrer">
+                            <span>ZeroZero</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <a href="https://resultados.fpf.pt/Competition/Details?competitionId=30059&amp;seasonId=106" rel="noopener noreferrer">
+                            <span>FPF</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <span class="serie-jornada">Jornada 5</span>
+                    </h3>
+                </div>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <tbody>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Rio Mouro</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Belas</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Lourel</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Cacém</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">1º Dezembro</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Conquistadores</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Arsenal 72</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">10:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Gonçalvinhense</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Vila Verde</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">15:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Cd Agualva</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub-17 2ª Div S1 ⚽ <span style="font-size: 0.85em; color: #D9F2D0; font-weight: 600;">Almeida, Rodas, Rafa e Dennis <span style="color: #fbbf24; font-weight: bold; margin: 0 0.2em;">•</span> Rebocho <span style="color: #fbbf24; font-weight: bold; margin: 0 0.2em;">•</span> Davi Silva</span></h2>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-ii-divisao-1-fase-serie-1-2026-2027/225008" rel="noopener noreferrer">
+                            <span>ZeroZero</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <a href="https://resultados.fpf.pt/Competition/Details?competitionId=30056&amp;seasonId=106" rel="noopener noreferrer">
+                            <span>FPF</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <span class="serie-jornada">Jornada 5</span>
+                    </h3>
+                </div>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <tbody>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Sintrense &quot;B&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Loures</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Ponterrolense</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Tojal &quot;A&quot;</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Malveira</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Cd Mafra &quot;B&quot;</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Venda Pinheiro</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Ponte Frielas &quot;A&quot;</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Santa Iria &quot;A&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">10:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Vila Verde &quot;A&quot;</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Sacavenense &quot;B&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">1º Dezembro &quot;B&quot;</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Lourel</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Col Pedro Arrupe</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Carregado &quot;A&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Camarate</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub-17 3ª Div S6 ⚽ <span style="font-size: 0.85em; color: #D9F2D0; font-weight: 600;">Tiago e Matos <span style="color: #fbbf24; font-weight: bold; margin: 0 0.2em;">•</span> Silva e Nascimento <span style="color: #fbbf24; font-weight: bold; margin: 0 0.2em;">•</span> Caixeiro <span style="color: #fbbf24; font-weight: bold; margin: 0 0.2em;">•</span> RdM 2010</span></h2>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-iii-divisao-1-fase-serie-6-2026-2027/224757" rel="noopener noreferrer">
+                            <span>ZeroZero</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <a href="https://resultados.fpf.pt/Competition/Details?competitionId=30061&amp;seasonId=106" rel="noopener noreferrer">
+                            <span>FPF</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <span class="serie-jornada">Jornada 5</span>
+                    </h3>
+                </div>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <tbody>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Pêro Pinheiro</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Cacém</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Porto Salvo &quot;C&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Vila Verde &quot;B&quot;</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">União Mercês</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Mucifalense</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Cd Agualva</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">10:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Rio Mouro</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Mem Martins</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">10:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Montelavarenses</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Negrais</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">10:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Despertar</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub-16 S3 ⚽ <span style="font-size: 0.85em; color: #D9F2D0; font-weight: 600;">Hermeson <span style="color: #fbbf24; font-weight: bold; margin: 0 0.2em;">•</span> Júlio e Vanylson</span></h2>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-b-sub-16-1-fase-serie-3-2026-2027/225013" rel="noopener noreferrer">
+                            <span>ZeroZero</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <a href="https://resultados.fpf.pt/Competition/Details?competitionId=30059&amp;seasonId=106" rel="noopener noreferrer">
+                            <span>FPF</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <span class="serie-jornada">Jornada 5</span>
+                    </h3>
+                </div>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <tbody>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Cascais</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Cif</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Damaiense</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Ass Torre</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Efbo</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">10:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Cd Marista</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Malveira Serra</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">10:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Academia Alcoitão</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Unidos</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Real</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub-15 2ª Div S1 ⚽ <span style="font-size: 0.85em; color: #D9F2D0; font-weight: 600;">RdM 2012 Mister Rodrigo</span></h2>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-c-2-divisao-serie-1-2026-27/225385" rel="noopener noreferrer">
+                            <span>ZeroZero</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <a href="https://resultados.fpf.pt/Competition/Details?competitionId=30057&amp;seasonId=106" rel="noopener noreferrer">
+                            <span>FPF</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <span class="serie-jornada">Jornada 5</span>
+                    </h3>
+                </div>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <tbody>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Alta Lisboa</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Janitas</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Vialonga</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Ericeirense</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Ponte Frielas</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Loures</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Rio Mouro</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Despertar</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Malveira</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Alenquer</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Vila Verde &quot;A&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Carregado</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Lourinhanense</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Col Pedro Arrupe</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub-15 3ª Div S5 ⚽ <span style="font-size: 0.85em; color: #D9F2D0; font-weight: 600;">Mister Bruno Carvalho</span></h2>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-c-iii-divisao-serie-5-2026-2027/224837" rel="noopener noreferrer">
+                            <span>ZeroZero</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <a href="https://resultados.fpf.pt/Competition/Details?competitionId=30062&amp;seasonId=106" rel="noopener noreferrer">
+                            <span>FPF</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <span class="serie-jornada">Jornada 5</span>
+                    </h3>
+                </div>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <tbody>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Cacém</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">10:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Cd Agualva</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Cascais</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Abóboda</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Porto Salvo</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Outurela</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Tires</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Ad Oeiras &quot;B&quot;</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Sport Túlias</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Leões Porto Salvo</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub 17 1ª Div ⚽ <span style="font-size: 0.85em; color: #D9F2D0; font-weight: 600;">Benjamim e Rafa <span style="color: #fbbf24; font-weight: bold; margin: 0 0.2em;">•</span> Miranda</span></h2>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/competicao/af-lisboa-juniores-b-1-divisao" rel="noopener noreferrer">
+                            <span>ZeroZero</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <a href="https://resultados.fpf.pt/Competition/Details?competitionId=30052&amp;seasonId=106" rel="noopener noreferrer">
+                            <span>FPF</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <span class="serie-jornada">Jornada 5</span>
+                    </h3>
+                </div>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <tbody>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Belenenses &quot;B&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">08:45</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Efbo</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Cd Mafra &quot;A&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">10:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Santa Maria &quot;A&quot;</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Cultural &quot;A&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">10:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Damaiense &quot;A&quot;</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Algés &quot;A&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Atlético &quot;A&quot;</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Sintrense &quot;A&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Sacavenense &quot;A&quot;</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Povoense &quot;A&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">1º Dezembro &quot;A&quot;</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Oriental &quot;A&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Alverca &quot;B&quot;</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Ericeirense &quot;A&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">11:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Torreense &quot;B&quot;</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Sub 19 2ª Div S2 ⚽ <span style="font-size: 0.85em; color: #D9F2D0; font-weight: 600;">RdM Juniores</span></h2>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/edicao/af-lisboa-juniores-a-2-divisao-serie-2-2026-2027/224787" rel="noopener noreferrer">
+                            <span>ZeroZero</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <a href="https://resultados.fpf.pt/Competition/Details?competitionId=30047&amp;seasonId=106" rel="noopener noreferrer">
+                            <span>FPF</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <span class="serie-jornada">Jornada 5</span>
+                    </h3>
+                </div>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <tbody>
+
+                        <tr class="">
+                            <td class="data">31/10</td>
+                            <td class="equipa-casa"><strong class="vencedor">Tenente Valdez</strong></td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><a class="link-jogo" href="https://resultados.fpf.pt/Match/GetMatchInformation?matchId=2615028" rel="noopener noreferrer"><span class="concluido">2-0</span></a></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Pinheiro Loures</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">31/10</td>
+                            <td class="equipa-casa">Sanjoanense</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">15:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Cacém &quot;B&quot;</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">31/10</td>
+                            <td class="equipa-casa">Encarnação Olivais</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">16:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Tocof</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">31/10</td>
+                            <td class="equipa-casa">Catujalense</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><a class="link-jogo" href="https://resultados.fpf.pt/Match/GetMatchInformation?matchId=2615035" rel="noopener noreferrer"><span class="concluido">1-3</span></a></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora"><strong class="vencedor">Santa Maria &quot;B&quot;</strong></td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">31/10</td>
+                            <td class="equipa-casa">Bobadelense</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">16:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Tojal</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">31/10</td>
+                            <td class="equipa-casa">Alta Lisboa</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><a class="link-jogo" href="https://resultados.fpf.pt/Match/GetMatchInformation?matchId=2615031" rel="noopener noreferrer"><span class="concluido">2-3</span></a></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora"><strong class="vencedor">Olivais Sul</strong></td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">31/10</td>
+                            <td class="equipa-casa">Frielas</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">17:30</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Unidos, Sad</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">31/10</td>
+                            <td class="equipa-casa">Caneças</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">18:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Salesianos Lisboa</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">Seniores 3ªDiv S3 ⚽ <span style="font-size: 0.85em; color: #D9F2D0; font-weight: 600;">RdM Seniores</span></h2>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/competicao/af-lisboa-3-divisao" rel="noopener noreferrer">
+                            <span>ZeroZero</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <a href="https://resultados.fpf.pt/Competition/Details?competitionId=29945&amp;seasonId=106" rel="noopener noreferrer">
+                            <span>FPF</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <span class="serie-jornada">Jornada 7</span>
+                    </h3>
+                </div>
+            </header>
+
+            <div class="tabela-container">
+                <table>
+                    <tbody>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">União Santos</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">15:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Negrais</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Algueirão</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">15:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">1º Dezembro &quot;C&quot;</td>
+                        </tr>
+
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Despertar</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">15:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Rio Mouro</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Sintrense, Sad &quot;B&quot;</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">15:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Mem Martins</td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa">Arsenal 72, Sad</td>
+                            <td class="classificacao classificacao-casa">–</td>
+                            <td class="resultado"><span class="agendado">15:00</span></td>
+                            <td class="classificacao classificacao-fora">–</td>
+                            <td class="equipa-fora">Cd Agualva</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+</section>
+        <section class="serie">
+            <header class="serie-cabecalho">
+                <h2 class="serie-nota">LINKS</h2>
+                <div class="serie-links">
+                    <h3 class="serie-titulo">
+                        <a href="https://www.zerozero.pt/associacao/af-lisboa" rel="noopener noreferrer">
+                            <span>ZeroZero AFL</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <a href="https://resultados.fpf.pt/Competition/GetCompetitionsByAssociation?associationId=229&seasonId=106" rel="noopener noreferrer">
+                            <span>FPF AFL</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                        <a href="index2.html">
+                            <span>Jornada ZeroZero</span>
+                            <span class="link-externo" aria-hidden="true">↗</span>
+                        </a>
+                    </h3>
+                </div>
+            </header>
+        </section>
+        <footer class="rodape">
+            Dados obtidos a partir do site de resultados da FPF.
+        </footer>
+    </main>
+
+    <script>
+        const dataGeracao = new Date("2026-11-01T00:45:44+00:00");
+        const textoDataGeracao = "01/11/2026 às 00:45:44";
+
+        function atualizarTempoDecorrido() {
+            const elemento = document.getElementById("data-execucao");
+
+            if (!elemento || Number.isNaN(dataGeracao.getTime())) {
+                return;
+            }
+
+            let totalSegundos = Math.max(
+                0,
+                Math.floor((Date.now() - dataGeracao.getTime()) / 1000)
+            );
+
+            const dias = Math.floor(totalSegundos / 86400);
+            totalSegundos %= 86400;
+
+            const horas = Math.floor(totalSegundos / 3600);
+            totalSegundos %= 3600;
+
+            const minutos = Math.floor(totalSegundos / 60);
+            const segundos = totalSegundos % 60;
+            const partesTempo = [];
+
+            if (dias > 0) {
+                partesTempo.push(`${dias}d`);
+            }
+
+            if (horas > 0) {
+                partesTempo.push(`${String(horas).padStart(2, "0")}h`);
+            }
+
+            if (minutos > 0) {
+                partesTempo.push(`${String(minutos).padStart(2, "0")}m`);
+            }
+
+            partesTempo.push(`${String(segundos).padStart(2, "0")}s`);
+
+            elemento.textContent =
+                `Snapshot de ${textoDataGeracao} ` +
+                `(há ${partesTempo.join(" ")})`;
+        }
+
+        atualizarTempoDecorrido();
+        window.setInterval(atualizarTempoDecorrido, 1000);
+    </script>
+</body>
+</html>
