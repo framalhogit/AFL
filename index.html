@@ -7,84 +7,148 @@
     <link rel="icon" type="image/x-icon" href="https://framalhogit.github.io/AFL/favicon.ico">
     <link rel="shortcut icon" href="https://framalhogit.github.io/AFL/favicon.ico">
     <style>
-:root { --azul: #17324d; --azul-claro: #eaf2f8; --fundo: #f2f4f7; --cartao: #ffffff; --texto: #20252b; --secundario: #66717d; --linha: #dce2e8; --verde: #137a49; --laranja: #9a5800; --vermelho: #a12622; --highlight: #fff3cd; --highlight-borda: #f0ad00; }
+/* ==========================================================================
+   style.css - aspeto das páginas do ZeroZero e da FPF
+   (é incluído dentro de cada página quando esta é gerada)
+
+   1. Cores e base
+   2. Cabeçalho da página
+   3. Cartão de cada série (cabeçalho, notas e links)
+   4. Tabela de jogos
+   5. Resultados (por jogar, terminado, especial, a decorrer)
+   6. Mensagens e rodapé
+   7. Cores próprias de cada página
+   8. Ecrãs pequenos
+   ========================================================================== */
+
+
+/* 1. Cores e base --------------------------------------------------------- */
+:root {
+    --azul: #17324d;
+    --azul-claro: #eaf2f8;
+    --fundo: #f2f4f7;
+    --cartao: #ffffff;
+    --texto: #20252b;
+    --secundario: #66717d;
+    --linha: #dce2e8;
+    --verde: #137a49;
+    --laranja: #9a5800;
+    --vermelho: #a12622;
+    --highlight: #fff3cd;
+    --highlight-borda: #f0ad00;
+}
+
 * { box-sizing: border-box; }
-body { margin: 0; padding: 32px 18px; background: var(--fundo); color: var(--texto); font-family: Arial, Helvetica, sans-serif; }
+
+body {
+    margin: 0;
+    padding: 32px 18px;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .pagina { width: min(1100px, 100%); margin: 0 auto; }
+
+
+/* 2. Cabeçalho da página -------------------------------------------------- */
 .cabecalho-pagina { margin-bottom: 24px; }
 .cabecalho-pagina h1 { margin: 0 0 6px; color: var(--azul); font-size: 30px; }
 .cabecalho-pagina p { margin: 0; color: var(--secundario); }
 .cabecalho-pagina .data-execucao { margin-bottom: 8px; font-size: 14px; font-weight: 600; }
-.serie { margin-bottom: 24px; overflow: hidden; background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; box-shadow: 0 3px 12px rgba(20,40,60,.08); }
+
+
+/* 3. Cartão de cada série ------------------------------------------------- */
+.serie {
+    margin-bottom: 24px;
+    overflow: hidden;
+    background: var(--cartao);
+    border: 1px solid var(--linha);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(20, 40, 60, .08);
+}
+
 .serie-cabecalho { padding: 20px 22px 18px; color: white; background: var(--azul); }
+
+/* Título da série (nota) e texto secundário (nota2), com "•" coloridos */
 .serie-nota { margin: 0 0 8px; font-size: 21px; font-weight: 700; }
+.nota2 { font-size: 0.85em; color: #b5e7ec; font-weight: 600; }
+.nota2-separador { color: #fbbf24; font-weight: bold; margin: 0 0.2em; }
+
+/* Linha de botões: ZeroZero ↗ | FPF ↗ | Jornada n */
+.serie-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .serie-titulo { margin: 0; font-size: 15px; font-weight: 400; }
+
 .serie-titulo a {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-
+    padding: 6px 10px;
+    border-radius: 8px;
     color: #ffffff;
     text-decoration: none;
     font-weight: 700;
-
-    padding: 6px 10px;
-    border-radius: 8px;
-
     background-color: rgba(255, 255, 255, 0.10);
 }
 .serie-titulo a:hover,
 .serie-titulo a:focus {
-    background-color: rgba(255, 255, 255, 0.18);
     color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.18);
 }
+.link-externo { font-size: 13px; }
 
-.serie-links {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
 .serie-jornada {
     display: inline-flex;
     align-items: center;
-
+    gap: 10px;
+    padding: 6px 10px;
+    border-radius: 8px;
     color: #ccffcc;
     text-decoration: none;
     font-weight: 700;
-
-    padding: 6px 10px;
-    border-radius: 8px;
-
     background-color: black;
-    gap: 10px;
 }
 
-.link-externo { font-size: 13px; }
+
+/* 4. Tabela de jogos -------------------------------------------------------
+   Seis colunas: Data | Casa | Class. | Resultado | Class. | Visitante       */
 .tabela-container { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; }
-th { padding: 11px 14px; color: var(--azul); background: var(--azul-claro); border-bottom: 2px solid var(--linha); font-size: 13px; text-align: left; text-transform: uppercase; letter-spacing: .04em; }
+table { width: 100%; border-collapse: collapse; table-layout: auto; }
+
+th {
+    padding: 11px 14px;
+    color: var(--azul);
+    background: var(--azul-claro);
+    border-bottom: 2px solid var(--linha);
+    font-size: 13px;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
 td { padding: 12px 14px; border-bottom: 1px solid var(--linha); vertical-align: middle; }
+
 tbody tr:last-child td { border-bottom: 0; }
 tbody tr:hover { background: #fafcfe; }
-tbody tr.linha-highlight, tbody tr.linha-highlight:hover { background: var(--highlight); }
-tbody tr.linha-highlight td:first-child { border-left: 5px solid var(--highlight-borda); padding-left: 9px; }
-.data { width: 90px; font-family: Consolas, "Courier New", monospace; color: var(--secundario); white-space: nowrap; }
-.equipa-casa { text-align: right; }
-/*.posicao { font-size: 0.78em; font-weight: 400 !important; color: #8a94a3; margin-left: 4px; white-space: nowrap; vertical-align: baseline; background: #fafafa; }*/
-.resultado { width: 105px; text-align: center; font-family: Consolas, "Courier New", monospace; font-size: 15px; font-weight: 700; white-space: nowrap; }
-.resultado span { display: inline-block; min-width: 57px; padding: 5px 8px; border-radius: 6px; }
-.concluido { color: var(--verde); background: #e7f6ee; }
-.agendado { color: var(--laranja); background: #fff2de; }
-.especial { color: var(--vermelho); background: #fdebea; }
-.mensagem { padding: 18px 22px; color: var(--vermelho); }
-.rodape { margin-top: 26px; color: var(--secundario); font-size: 12px; text-align: center; }
-@media (max-width: 700px) { body { padding: 18px 8px; } .cabecalho-pagina h1 { font-size: 24px; } .serie-cabecalho { padding: 16px; } .serie-nota { font-size: 18px; } th, td { padding: 10px 8px; font-size: 13px; } tbody tr.linha-highlight td:first-child { padding-left: 3px; } }
 
-/* Tabela de seis colunas: Data | Casa | Class. | Resultado | Class. | Visitante */
-table { table-layout: auto; }
+/* Jogos das equipas destacadas: fundo amarelo-claro e barra à esquerda.
+   A barra é uma sombra interior (não um border), para não mexer no espaço
+   da célula: assim a data fica alinhada com a das outras linhas. */
+tbody tr.linha-highlight,
+tbody tr.linha-highlight:hover { background: var(--highlight); }
+tbody tr.linha-highlight td:first-child {
+    box-shadow: inset 5px 0 0 var(--highlight-borda);
+}
+
+.data {
+    width: 90px;
+    font-family: Consolas, "Courier New", monospace;
+    color: var(--secundario);
+    white-space: nowrap;
+}
 .equipa-casa { text-align: right; }
 .equipa-fora { text-align: left; }
+
+/* Posição de cada equipa na classificação */
 .classificacao {
     width: 32px;
     min-width: 32px;
@@ -98,9 +162,61 @@ table { table-layout: auto; }
     white-space: nowrap;
     vertical-align: middle;
 }
-.resultado { width: 88px; }
 
+
+/* 5. Resultados ----------------------------------------------------------- */
+.resultado {
+    width: 88px;
+    text-align: center;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.resultado span { display: inline-block; min-width: 57px; padding: 5px 8px; border-radius: 6px; }
+
+.concluido { color: var(--verde); background: #e7f6ee; }      /* jogo terminado */
+.agendado  { color: var(--laranja); background: #fff2de; }    /* hora do jogo */
+.especial  { color: var(--vermelho); background: #fdebea; }   /* ADI, ANU, INT, CANC */
+
+/* Jogo a decorrer: resultado com fundo amarelo, como no ZeroZero... */
+.resultado .ao-vivo {
+    color: #1a1a1a;
+    background: #ffeb3b;
+    box-shadow: 0 0 0 1px #e0c200 inset;
+}
+/* ...e o minuto (ou INT) por baixo, sem o aspeto de "pastilha" dos resultados */
+.resultado span.minuto-vivo {
+    display: block;
+    min-width: 0;
+    margin-top: 2px;
+    padding: 0;
+    border-radius: 0;
+    color: #d32f2f;
+    font-size: 0.75em;
+    line-height: 1.1;
+}
+
+
+/* 6. Mensagens e rodapé --------------------------------------------------- */
+.mensagem { padding: 18px 22px; color: var(--vermelho); }
+.rodape { margin-top: 26px; color: var(--secundario); font-size: 12px; text-align: center; }
+
+
+/* 7. Cores próprias de cada página ----------------------------------------
+   O <body> de cada página tem a classe pagina-zerozero ou pagina-fpf.      */
+.pagina-fpf .serie-cabecalho { background: #0C3611; }   /* verde escuro (alternativa: #2f3f38) */
+.pagina-fpf .nota2 { color: #D9F2D0; }
+
+
+/* 8. Ecrãs pequenos ------------------------------------------------------- */
 @media (max-width: 700px) {
+    body { padding: 18px 8px; }
+    .cabecalho-pagina h1 { font-size: 24px; }
+    .serie-cabecalho { padding: 16px; }
+    .serie-nota { font-size: 18px; }
+    th, td { padding: 10px 8px; font-size: 13px; }
+
     .classificacao {
         width: 24px;
         min-width: 24px;
@@ -137,8 +253,8 @@ table { table-layout: auto; }
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao">
-                Snapshot de 01/11/2026 às 19:00:04
-                (há 36s)
+                Snapshot de 01/11/2026 às 19:10:03
+                (há 02m 04s)
             </p>
             <h1>Jornada no ZeroZero</h1>
             <p>Jogos e resultados por equipa e competição.</p>
@@ -1012,8 +1128,8 @@ table { table-layout: auto; }
     </main>
 
     <script>
-        const dataGeracao = new Date("2026-11-01T19:00:04+00:00");
-        const textoDataGeracao = "01/11/2026 às 19:00:04";
+        const dataGeracao = new Date("2026-11-01T19:10:03+00:00");
+        const textoDataGeracao = "01/11/2026 às 19:10:03";
 
         function atualizarTempoDecorrido() {
             const elemento = document.getElementById("data-execucao");
