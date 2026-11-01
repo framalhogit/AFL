@@ -126,22 +126,8 @@ table { table-layout: auto; }
             align-items: center;
             column-gap: 6px;
         }
-        /* Bolinha a piscar. Os !important anulam regras do style.css
-           (padding, min-width, etc.) que a esticavam numa barra. */
-        .resultado .vivo-grelha .pisca-vivo {
-            justify-self: end;
-            display: block !important;
-            box-sizing: content-box !important;
-            width: 8px !important;
-            height: 8px !important;
-            min-width: 0 !important;
-            max-width: 8px !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            border: 0 !important;
-            border-radius: 50% !important;
-            background: #d32f2f !important;
-            box-shadow: none !important;
+        /* Bolinha a piscar (o tamanho e a cor estão no próprio SVG). */
+        .pisca-vivo {
             animation: pisca 1s steps(1) infinite;
         }
         .minuto-vivo {
@@ -180,8 +166,8 @@ table { table-layout: auto; }
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao">
-                Snapshot de 01/11/2026 às 12:02:55
-                (há 01m 25s)
+                Snapshot de 01/11/2026 às 12:07:36
+                (há 01m 10s)
             </p>
             <h1>Jornada no ZeroZero</h1>
             <p>Jogos e resultados por equipa e competição.</p>
@@ -347,7 +333,7 @@ table { table-layout: auto; }
                             <td class="data">01/11</td>
                             <td class="equipa-casa">Sp. Lourel</td>
                             <td class="classificacao classificacao-casa">12º</td>
-                            <td class="resultado"><span class="vivo-grelha"><i class="pisca-vivo" aria-hidden="true"></i><a class="link-jogo" href="https://www.zerozero.pt/live-ao-minuto/2026-11-01-sp-lourel-colegio-pedro-arrupe/12691110" rel="noopener noreferrer"><span class="concluido ao-vivo">0-1</span></a><span class="minuto-vivo">INT</span></span></td>
+                            <td class="resultado"><span class="vivo-grelha" style="display:inline-grid !important;grid-template-columns:1fr auto 1fr !important;align-items:center !important;column-gap:6px !important;padding:0 !important;margin:0 !important;border:0 !important;background:none !important;box-shadow:none !important;min-width:0 !important;width:auto !important;"><svg class="pisca-vivo" width="8" height="8" viewBox="0 0 8 8" style="display:block !important;justify-self:end !important;width:8px !important;height:8px !important;min-width:0 !important;padding:0 !important;margin:0 !important;border:0 !important;background:none !important;" aria-hidden="true"><circle cx="4" cy="4" r="4" fill="#d32f2f"/></svg><a class="link-jogo" href="https://www.zerozero.pt/live-ao-minuto/2026-11-01-sp-lourel-colegio-pedro-arrupe/12691110" rel="noopener noreferrer"><span class="concluido ao-vivo">0-1</span></a><span class="minuto-vivo" style="justify-self:start !important;padding:0 !important;margin:0 !important;border:0 !important;background:none !important;box-shadow:none !important;min-width:0 !important;width:auto !important;">INT</span></span></td>
                             <td class="classificacao classificacao-fora">4º</td>
                             <td class="equipa-fora">Colégio Pedro Arrupe</td>
                         </tr>
@@ -560,7 +546,7 @@ table { table-layout: auto; }
                             <td class="data">01/11</td>
                             <td class="equipa-casa">Alta de Lisboa</td>
                             <td class="classificacao classificacao-casa">2º</td>
-                            <td class="resultado"><span class="vivo-grelha"><i class="pisca-vivo" aria-hidden="true"></i><a class="link-jogo" href="https://www.zerozero.pt/live-ao-minuto/2026-11-01-alta-de-lisboa-cmf-janitas/12709660" rel="noopener noreferrer"><span class="concluido ao-vivo">3-0</span></a><span class="minuto-vivo">45+&#x27;</span></span></td>
+                            <td class="resultado"><span class="vivo-grelha" style="display:inline-grid !important;grid-template-columns:1fr auto 1fr !important;align-items:center !important;column-gap:6px !important;padding:0 !important;margin:0 !important;border:0 !important;background:none !important;box-shadow:none !important;min-width:0 !important;width:auto !important;"><svg class="pisca-vivo" width="8" height="8" viewBox="0 0 8 8" style="display:block !important;justify-self:end !important;width:8px !important;height:8px !important;min-width:0 !important;padding:0 !important;margin:0 !important;border:0 !important;background:none !important;" aria-hidden="true"><circle cx="4" cy="4" r="4" fill="#d32f2f"/></svg><a class="link-jogo" href="https://www.zerozero.pt/live-ao-minuto/2026-11-01-alta-de-lisboa-cmf-janitas/12709660" rel="noopener noreferrer"><span class="concluido ao-vivo">4-0</span></a><span class="minuto-vivo" style="justify-self:start !important;padding:0 !important;margin:0 !important;border:0 !important;background:none !important;box-shadow:none !important;min-width:0 !important;width:auto !important;">INT</span></span></td>
                             <td class="classificacao classificacao-fora">12º</td>
                             <td class="equipa-fora">CMF Janitas</td>
                         </tr>
@@ -1059,8 +1045,8 @@ table { table-layout: auto; }
     </main>
 
     <script>
-        const dataGeracao = new Date("2026-11-01T12:02:55+00:00");
-        const textoDataGeracao = "01/11/2026 às 12:02:55";
+        const dataGeracao = new Date("2026-11-01T12:07:36+00:00");
+        const textoDataGeracao = "01/11/2026 às 12:07:36";
 
         function atualizarTempoDecorrido() {
             const elemento = document.getElementById("data-execucao");
