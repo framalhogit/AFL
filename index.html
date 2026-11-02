@@ -14,7 +14,7 @@
     <style>
 /* ==========================================================================
    style.css - aspeto da página (ZeroZero e FPF)
-   versao: 2   (igual ao VERSAO dos scripts; ver AFL.verificar_versoes)
+   versao: 3   (igual ao VERSAO dos scripts; ver AFL.verificar_versoes)
    (é incluído dentro da página quando esta é gerada)
 
    1. Cores e base
@@ -299,8 +299,8 @@ tbody tr.linha-highlight td:first-child {
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao"
-               data-gerado="2026-11-02T13:00:03+00:00" data-texto="02/11/2026 às 13:00:03">
-                Snapshot de 02/11/2026 às 13:00:03 (há 01m 05s)
+               data-gerado="2026-11-02T15:02:40+00:00" data-texto="02/11/2026 às 15:02:40">
+                Snapshot de 02/11/2026 às 15:02:40 (há 01m 02s)
             </p>
             <h1>Jornada AFL</h1>
             <p>Jogos e resultados do ZeroZero e da FPF (FPF: 31/10 e 01/11).</p>
@@ -1892,14 +1892,6 @@ tbody tr.linha-highlight td:first-child {
                             <td class="classificacao classificacao-fora">1º</td>
                             <td class="equipa-fora"><strong class="vencedor">Leões Porto Salvo</strong></td>
                         </tr>
-                        <tr class="linha-highlight">
-                            <td class="data">01/11</td>
-                            <td class="equipa-casa"><strong class="vencedor">Porto Salvo</strong></td>
-                            <td class="classificacao classificacao-casa">5º</td>
-                            <td class="resultado"><a class="link-jogo" href="https://resultados.fpf.pt/Match/GetMatchInformation?matchId=2621928" rel="noopener noreferrer"><span class="concluido">6-2</span></a></td>
-                            <td class="classificacao classificacao-fora">9º</td>
-                            <td class="equipa-fora">Outurela</td>
-                        </tr>
                         <tr class="">
                             <td class="data">01/11</td>
                             <td class="equipa-casa">Tires</td>
@@ -1907,6 +1899,14 @@ tbody tr.linha-highlight td:first-child {
                             <td class="resultado"><a class="link-jogo" href="https://resultados.fpf.pt/Match/GetMatchInformation?matchId=2621933" rel="noopener noreferrer"><span class="concluido">2-3</span></a></td>
                             <td class="classificacao classificacao-fora">6º</td>
                             <td class="equipa-fora"><strong class="vencedor">Ad Oeiras &quot;B&quot;</strong></td>
+                        </tr>
+                        <tr class="linha-highlight">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa"><strong class="vencedor">Porto Salvo</strong></td>
+                            <td class="classificacao classificacao-casa">5º</td>
+                            <td class="resultado"><a class="link-jogo" href="https://resultados.fpf.pt/Match/GetMatchInformation?matchId=2621928" rel="noopener noreferrer"><span class="concluido">6-2</span></a></td>
+                            <td class="classificacao classificacao-fora">9º</td>
+                            <td class="equipa-fora">Outurela</td>
                         </tr>
                     </tbody>
                 </table>
@@ -2802,6 +2802,14 @@ tbody tr.linha-highlight td:first-child {
                             <td class="classificacao classificacao-fora">8º</td>
                             <td class="equipa-fora">1º Dezembro &quot;C&quot;</td>
                         </tr>
+                        <tr class="">
+                            <td class="data">01/11</td>
+                            <td class="equipa-casa"><strong class="vencedor">Arsenal 72, Sad</strong></td>
+                            <td class="classificacao classificacao-casa">10º</td>
+                            <td class="resultado"><a class="link-jogo" href="https://resultados.fpf.pt/Match/GetMatchInformation?matchId=2595588" rel="noopener noreferrer"><span class="concluido">1-0</span></a></td>
+                            <td class="classificacao classificacao-fora">13º</td>
+                            <td class="equipa-fora">Cd Agualva</td>
+                        </tr>
                         <tr class="linha-highlight">
                             <td class="data">01/11</td>
                             <td class="equipa-casa">Despertar</td>
@@ -2817,14 +2825,6 @@ tbody tr.linha-highlight td:first-child {
                             <td class="resultado"><span class="agendado">15:00</span></td>
                             <td class="classificacao classificacao-fora">4º</td>
                             <td class="equipa-fora">Mem Martins</td>
-                        </tr>
-                        <tr class="">
-                            <td class="data">01/11</td>
-                            <td class="equipa-casa"><strong class="vencedor">Arsenal 72, Sad</strong></td>
-                            <td class="classificacao classificacao-casa">10º</td>
-                            <td class="resultado"><a class="link-jogo" href="https://resultados.fpf.pt/Match/GetMatchInformation?matchId=2595588" rel="noopener noreferrer"><span class="concluido">1-0</span></a></td>
-                            <td class="classificacao classificacao-fora">13º</td>
-                            <td class="equipa-fora">Cd Agualva</td>
                         </tr>
                     </tbody>
                 </table>
@@ -3102,8 +3102,9 @@ tbody tr.linha-highlight td:first-child {
         // Botão que roda entre as vistas de cada cartão (ex.: ZZ J5 → ZZ J6 → FPF J5 → ...).
         // Cada vista é um <div class="vista"> com data-tipo, data-jornada e data-rotulo;
         // só a que tem a classe "ativa" é mostrada. O data-vista do cartão (= tipo
-        // da vista ativa) dá a cor do cabeçalho no style.css. A escolha não é
-        // guardada: em cada refresh todos os cartões voltam à vista inicial.
+        // da vista ativa) dá a cor do cabeçalho no style.css. A vista escolhida
+        // em cada cartão é guardada para se manter depois do refresh da página.
+        const CHAVE_VISTAS = "vistas-escolhidas:" + location.pathname;
 
         function mostrarVista(cartao, indice) {
             const vistas = cartao.querySelectorAll(".vista");
@@ -3126,6 +3127,24 @@ tbody tr.linha-highlight td:first-child {
             }
         }
 
+        function lerEscolhas() {
+            try {
+                return JSON.parse(sessionStorage.getItem(CHAVE_VISTAS) || "{}");
+            } catch (erro) {
+                return {};
+            }
+        }
+
+        function guardarEscolha(cartao) {
+            const escolhas = lerEscolhas();
+            escolhas[cartao.id] = Number(cartao.dataset.indice);
+            try {
+                sessionStorage.setItem(CHAVE_VISTAS, JSON.stringify(escolhas));
+            } catch (erro) {
+                // sem armazenamento disponível: a escolha só dura até ao próximo refresh
+            }
+        }
+
         document.addEventListener("click", (evento) => {
             const botao = evento.target.closest(".botao-jornada");
             if (!botao) {
@@ -3133,7 +3152,16 @@ tbody tr.linha-highlight td:first-child {
             }
             const cartao = botao.closest(".serie");
             mostrarVista(cartao, Number(cartao.dataset.indice || 0) + 1);
+            guardarEscolha(cartao);
         });
+
+        // Depois do refresh: repor a vista escolhida em cada cartão
+        for (const [id, indice] of Object.entries(lerEscolhas())) {
+            const cartao = document.getElementById(id);
+            if (cartao) {
+                mostrarVista(cartao, indice);
+            }
+        }
     </script>
 </body>
 </html>
