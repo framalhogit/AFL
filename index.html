@@ -186,6 +186,9 @@ tbody tr.linha-highlight td:first-child {
 .equipa-casa { text-align: right; }
 .equipa-fora { text-align: left; }
 
+/* Equipa isenta nesta jornada: "- ISENTO -" a itálico, cinza mais claro que os clubes */
+.isento { font-style: italic; color: #9aa3ad; }
+
 /* Posição de cada equipa na classificação */
 .classificacao {
     width: 32px;
@@ -299,8 +302,8 @@ tbody tr.linha-highlight td:first-child {
     <main class="pagina">
         <header class="cabecalho-pagina">
             <p class="data-execucao" id="data-execucao"
-               data-gerado="2026-11-07T21:34:44+00:00" data-texto="07/11/2026 às 21:34:44">
-                Snapshot de 07/11/2026 às 21:34:44 (há 35s)
+               data-gerado="2026-11-07T21:44:04+00:00" data-texto="07/11/2026 às 21:44:04">
+                Snapshot de 07/11/2026 às 21:44:04 (há 41s)
             </p>
             <h1>Jornada AFL</h1>
             <p>Jogos e resultados do ZeroZero e da FPF (FPF: 07/11 e 08/11).</p>
@@ -464,6 +467,22 @@ tbody tr.linha-highlight td:first-child {
                             <td class="resultado"><span class="agendado">11:00</span></td>
                             <td class="classificacao classificacao-fora">3º</td>
                             <td class="equipa-fora">Arsenal 72</td>
+                        </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">1º Dezembro</td>
+                            <td class="classificacao classificacao-casa">2º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
+                        </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">Mem Martins SC</td>
+                            <td class="classificacao classificacao-casa">4º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
                         </tr>
                     </tbody>
                 </table>
@@ -773,6 +792,14 @@ tbody tr.linha-highlight td:first-child {
                             <td class="classificacao classificacao-fora">8º</td>
                             <td class="equipa-fora">Venda Pinheiro</td>
                         </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">Colégio Pedro Arrupe</td>
+                            <td class="classificacao classificacao-casa">4º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -1058,6 +1085,14 @@ tbody tr.linha-highlight td:first-child {
                             <td class="classificacao classificacao-fora">7º</td>
                             <td class="equipa-fora">Pêro Pinheiro</td>
                         </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">Vila Verde</td>
+                            <td class="classificacao classificacao-casa">6º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -1314,6 +1349,30 @@ tbody tr.linha-highlight td:first-child {
                             <td class="resultado"><span class="agendado">17:00</span></td>
                             <td class="classificacao classificacao-fora">2º</td>
                             <td class="equipa-fora">Casa Pia</td>
+                        </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">GDS Cascais</td>
+                            <td class="classificacao classificacao-casa">4º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
+                        </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">Damaiense</td>
+                            <td class="classificacao classificacao-casa">6º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
+                        </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">EF Belém Estádio Restelo</td>
+                            <td class="classificacao classificacao-casa">13º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1620,6 +1679,22 @@ tbody tr.linha-highlight td:first-child {
                             <td class="classificacao classificacao-fora">5º</td>
                             <td class="equipa-fora">Ponte Frielas</td>
                         </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">Carregado</td>
+                            <td class="classificacao classificacao-casa">13º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
+                        </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">Sacavenense</td>
+                            <td class="classificacao classificacao-casa">16º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -1907,6 +1982,38 @@ tbody tr.linha-highlight td:first-child {
                             <td class="resultado"><span class="agendado">11:00</span></td>
                             <td class="classificacao classificacao-fora">8º</td>
                             <td class="equipa-fora">Estoril Ac</td>
+                        </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">GDS Cascais</td>
+                            <td class="classificacao classificacao-casa">2º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
+                        </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">Abóboda</td>
+                            <td class="classificacao classificacao-casa">4º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
+                        </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">Talaíde</td>
+                            <td class="classificacao classificacao-casa">13º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
+                        </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">Salesianos do Estoril</td>
+                            <td class="classificacao classificacao-casa">14º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
                         </tr>
                     </tbody>
                 </table>
@@ -2834,6 +2941,14 @@ tbody tr.linha-highlight td:first-child {
                             <td class="classificacao classificacao-fora">5º</td>
                             <td class="equipa-fora">União Santos</td>
                         </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">Sintrense</td>
+                            <td class="classificacao classificacao-casa">6º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -3018,6 +3133,22 @@ tbody tr.linha-highlight td:first-child {
                             <td class="resultado"><span class="agendado">10:30</span></td>
                             <td class="classificacao classificacao-fora">3º</td>
                             <td class="equipa-fora">S C Campomaiorense</td>
+                        </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">AC Arronches</td>
+                            <td class="classificacao classificacao-casa">1º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
+                        </tr>
+                        <tr class="linha-isento">
+                            <td class="data">08/11</td>
+                            <td class="equipa-casa">Eléctrico</td>
+                            <td class="classificacao classificacao-casa">4º</td>
+                            <td class="resultado"></td>
+                            <td class="classificacao classificacao-fora"></td>
+                            <td class="equipa-fora"><em class="isento">- ISENTO -</em></td>
                         </tr>
                     </tbody>
                 </table>
